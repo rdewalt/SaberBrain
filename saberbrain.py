@@ -15,7 +15,7 @@ brightness = 1.0
 
 button = Pin(BUTTON_NUM, Pin.IN, Pin.PULL_UP)
 
-Color Definitions
+#Color Definitions
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 ORANGE = ( 255, 127, 0 )
@@ -25,7 +25,7 @@ CYAN = (0, 0, 255)
 BLUE = (0, 0, 128)
 #Didn't use this. Indigo looks white-purple.  Pride rainbow flag doesn't have indigo.
 #INDIGO = ( 76, 43,195)
-PURPLE = (250, 0, 250)
+PURPLE = (200, 0, 200)
 #This will REALLY draw the battery down... try not to use it...
 WHITE = (255, 255, 255)
 
@@ -157,20 +157,23 @@ def toggleBlade():
             BladeOut(RED)
             bladeState=1
         if bladeColor==3:
-            BladeOut(YELLOW)
+            BladeOut(PURPLE)
             bladeState=1
         if bladeColor==4:
+            BladeOut(YELLOW)
+            bladeState=1
+        if bladeColor==5:
             pixels_fill(BLACK)
             pixels_show()
             ShowTrans()
             bladeState=1
-        if bladeColor==5:
+        if bladeColor==6:
             pixels_fill(BLACK)
             pixels_show()
             ShowRainbow()
             bladeState=1
 
-maxBlades=5 # If I add more colors/patterns, I have to change this.
+maxBlades=6 # If I add more colors/patterns, I have to change this.
 
 ## Okay, the "MAIN" starts here.  
 
