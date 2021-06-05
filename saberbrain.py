@@ -12,6 +12,7 @@ BUTTON_NUM = 18
 
 # LED Strip Brightness.  1.0 = 100%   0.0 = 0%  Doesn't seem linear.
 brightness = 1.0
+ChangeDelay=3 #Seconds to hold the button before Blade Change.
 
 button = Pin(BUTTON_NUM, Pin.IN, Pin.PULL_UP)
 
@@ -185,6 +186,7 @@ pixels_show()
 bladeState=1
 bladeColor=0
 BladeOut(BLUE)
+ButtonDelay=ChangeDelay
 
 changeSkip=1
 while True:
@@ -195,7 +197,7 @@ while True:
         while button.value()==0:  #While it is held down...
             time.sleep(0.01) # if this was ASM, this would be a few NOPs to delay a teeny bit.
             templength = time.time() - start
-            if templength>=1:  #If button has been held for more than a second
+            if templength>=ButtonDelay:  #If button has been held for more than a second
                 start=time.time() #Reset timer so it triggers again if held for an additional second, otherwise blades won't "cycle" and you'll have to keep press/hold
                 bladeColor=bladeColor+1
                 if bladeColor>maxBlades:
@@ -203,7 +205,10 @@ while True:
                 bladeState=0 # Fake the blade being "in" so that the toggleBlade is reused.
                 toggleBlade()
                 changeSkip=0 # Blade will be "out" so if you don't do this, once the loop ends the blade will retract
+                ButtonDelay=1
         if changeSkip==1:
             toggleBlade()
         else:  # Reset changeSkip, but I honestly might not need this... I'll test later.
             changeskip=1
+        ButtonDelay=ChangeDelay #Reset long delay before change
+
