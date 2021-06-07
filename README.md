@@ -14,3 +14,11 @@ Parts List::
 * a switch and a button, some wires, soldering, electrical tape, cursing and a LOT of iterations.  
 
 lightsaber blade is on pin 15, switch is on 18, because I burned out 16 and 17 in misadventures.
+
+I've been calling this the "PrideSaber" because of the proTrans, proQUILTBAG+ patterns in the last two.
+
+I will post "build" images if anyone wants.  But honestly, this only exists so others can potentially learned from what I have done.
+
+I didn't want a kit.  I wanted to build my own.  I did.  Here is the code that I used, if it helps you, that's cool.
+
+I make no claims of being good at micropython.  But it -WORKS- in mine, so that was a success for me.
